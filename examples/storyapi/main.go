@@ -19,10 +19,10 @@ import (
 	"time"
 
 	_ "github.com/lib/pq"
-	"github.com/rhaqim/story-api/db"
-	"github.com/rhaqim/story-api/game"
-	"github.com/rhaqim/story-api/handler"
-	"github.com/rhaqim/story-api/store"
+	"github.com/dgrslabs/story-api/db"
+	"github.com/dgrslabs/story-api/game"
+	"github.com/dgrslabs/story-api/handler"
+	"github.com/dgrslabs/story-api/store"
 )
 
 func main() {

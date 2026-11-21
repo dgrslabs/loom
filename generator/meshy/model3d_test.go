@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 func TestModel3DGeneratorTextFlow(t *testing.T) {

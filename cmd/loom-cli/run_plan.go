@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom/harness"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom/harness"
 )
 
 // TestReport extends harness.TestReport with a top-level Passed field

@@ -1,4 +1,4 @@
-module github.com/rhaqim/loom
+module github.com/dgrslabs/loom
 
 go 1.26.0
 

@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/rhaqim/loom/schema"
+	"github.com/dgrslabs/loom/schema"
 )
 
 // asyncImageGen is a stub async image generator. Generate returns a pending

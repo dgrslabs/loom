@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 // StubGenerator is an offline stand-in for a real text model. It inspects the

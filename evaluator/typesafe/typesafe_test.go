@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rhaqim/loom/evaluator"
+	"github.com/dgrslabs/loom/evaluator"
 )
 
 var _ evaluator.Evaluator = (*Evaluator)(nil)

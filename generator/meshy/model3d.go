@@ -15,7 +15,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/google/uuid"
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 const defaultBaseURL = "https://api.meshy.ai"

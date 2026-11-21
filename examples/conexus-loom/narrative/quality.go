@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 // quality.go is the pre-process Quality Engine: deterministic post-hooks that

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"math/rand/v2"
 
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom/harness"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom/harness"
 )
 
 // randomSuffix returns a short random hex string to avoid test slug collisions.

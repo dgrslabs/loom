@@ -29,7 +29,7 @@ Loom handles the infrastructure — session management, versioned agents and pro
 ## Installation
 
 ```bash
-go get github.com/rhaqim/loom
+go get github.com/dgrslabs/loom
 ```
 
 Requires Go 1.24+ (the module targets Go 1.25; see `go.mod`) and a Postgres or SQLite database.
@@ -50,9 +50,9 @@ import (
 
     _ "github.com/lib/pq"
 
-    loom "github.com/rhaqim/loom"
-    "github.com/rhaqim/loom/generator/openai"
-    "github.com/rhaqim/loom/schema"
+    loom "github.com/dgrslabs/loom"
+    "github.com/dgrslabs/loom/generator/openai"
+    "github.com/dgrslabs/loom/schema"
 )
 
 func main() {
@@ -255,7 +255,7 @@ Register any number of generators under a slug. Built-in adapters:
 | Package | Generator | Modality |
 |---|---|---|
 | `generator/openai` | `NewChatGenerator(key, model)` | Text (streaming) |
-| `generator/anthropic` | `NewChatGenerator(key, model)` | Text (streaming), on the official Anthropic Go SDK — a separate module: `go get github.com/rhaqim/loom/generator/anthropic` |
+| `generator/anthropic` | `NewChatGenerator(key, model)` | Text (streaming), on the official Anthropic Go SDK — a separate module: `go get github.com/dgrslabs/loom/generator/anthropic` |
 | `generator/replicate` | `NewImageGenerator(key, model)` | Image (async) |
 | `generator/runway` | `NewVideoGenerator(key, model)` | Video (async) |
 | `generator/meshy` | `NewModel3DGenerator(key)` | 3D asset, GLB (async, text- or image-to-3D) |
@@ -394,7 +394,7 @@ fmt.Printf("Session cost: $%.4f (%d tokens)\n", usage.TotalUSD, usage.TotalToken
 Score and compare outputs using another LLM as judge:
 
 ```go
-import "github.com/rhaqim/loom/judge"
+import "github.com/dgrslabs/loom/judge"
 
 rubric := e.Judges().Rubric("quality-judge")
 verdict, _ := rubric.Score(ctx, judge.ScoreRequest{
@@ -428,9 +428,9 @@ that code branches on, with every question evaluated independently in one round 
 
 ```go
 import (
-    "github.com/rhaqim/loom/evaluator"
-    "github.com/rhaqim/loom/evaluator/typesafe" // TypeSafe System One (the Jev model)
-    // "github.com/rhaqim/loom/evaluator/stub"  // deterministic, offline
+    "github.com/dgrslabs/loom/evaluator"
+    "github.com/dgrslabs/loom/evaluator/typesafe" // TypeSafe System One (the Jev model)
+    // "github.com/dgrslabs/loom/evaluator/stub"  // deterministic, offline
 )
 
 e, _ := loom.New(loom.Config{ /* ... */ Evaluator: typesafe.New(os.Getenv("TYPESAFE_API_KEY")) })
@@ -491,8 +491,8 @@ Write test plans in code or YAML. The harness runs all variants in parallel:
 
 ```go
 import (
-    loom "github.com/rhaqim/loom"
-    "github.com/rhaqim/loom/harness"
+    loom "github.com/dgrslabs/loom"
+    "github.com/dgrslabs/loom/harness"
 )
 
 plan := &harness.TestPlan{
@@ -586,7 +586,7 @@ Requires `DND_DSN` / `LOOM_DSN` set, or the default `postgres://loom:loom@localh
 
 ## Project layout
 
-The public API is a thin **facade**: applications import only `github.com/rhaqim/loom`.
+The public API is a thin **facade**: applications import only `github.com/dgrslabs/loom`.
 The implementation lives under `internal/engine` (unimportable by other modules), so
 its layout can change without breaking you.
 
@@ -644,14 +644,20 @@ Anthropic SDK's dependencies stay out of loom). Both are released from one
 commit on `main`:
 
 ```bash
-make release VERSION=v0.0.3   # checks, bumps generator/anthropic's loom require, tags
-git push origin main v0.0.3 generator/anthropic/v0.0.3   # the command it prints
+make release VERSION=v0.0.4   # checks, bumps generator/anthropic's loom require, tags
+git push origin main v0.0.4 generator/anthropic/v0.0.4   # the command it prints
 ```
 
 `generator/anthropic` is only retagged when it changed since its last release;
 otherwise just `vX.Y.Z` is created. The script refuses a dirty tree, another
 branch (`RELEASE_BRANCH` overrides) or an existing tag, and pushes nothing.
 
+## Author
+
+loom was created and is maintained by **Anusiem John-Franklin** ([@Rhaqim](https://github.com/Rhaqim)).
+
+It began in 2026 as [`github.com/Rhaqim/loom`](https://github.com/Rhaqim/loom), which remains its original home. In November 2026 it was brought to the [dgrslabs](https://github.com/dgrslabs) organization as `github.com/dgrslabs/loom`, starting at `v0.0.4`.
+
 ## License
 
-MIT
+MIT © 2026 Anusiem John-Franklin — see [LICENSE](LICENSE) for details.

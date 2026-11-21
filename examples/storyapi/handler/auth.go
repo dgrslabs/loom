@@ -3,8 +3,8 @@ package handler
 import (
 	"net/http"
 
-	"github.com/rhaqim/story-api/auth"
-	"github.com/rhaqim/story-api/domain"
+	"github.com/dgrslabs/story-api/auth"
+	"github.com/dgrslabs/story-api/domain"
 )
 
 // POST /api/auth/register

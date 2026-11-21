@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/rhaqim/story-api/game"
+	"github.com/dgrslabs/story-api/game"
 )
 
 // POST /api/stories/{id}/turns

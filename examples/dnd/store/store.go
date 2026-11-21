@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/rhaqim/loom-dnd/domain"
+	"github.com/dgrslabs/loom-dnd/domain"
 )
 
 // Store holds the database connection and provides all CRUD operations.

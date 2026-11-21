@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom/evaluator/stub"
-	"github.com/rhaqim/loom/schema"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom/evaluator/stub"
+	"github.com/dgrslabs/loom/schema"
 	_ "modernc.org/sqlite"
 )
 

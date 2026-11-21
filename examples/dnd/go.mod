@@ -1,11 +1,11 @@
-module github.com/rhaqim/loom-dnd
+module github.com/dgrslabs/loom-dnd
 
 go 1.26.0
 
 require (
+	github.com/dgrslabs/loom v0.0.3
 	github.com/google/uuid v1.6.0
 	github.com/lib/pq v1.12.3
-	github.com/rhaqim/loom v0.0.2
 	github.com/spf13/cobra v1.10.2
 )
 
@@ -33,11 +33,11 @@ require (
 )
 
 require (
+	github.com/dgrslabs/loom/generator/anthropic v0.0.0
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/rhaqim/loom/generator/anthropic v0.0.0
 	github.com/spf13/pflag v1.1.0 // indirect
 )
 
-replace github.com/rhaqim/loom => ../..
+replace github.com/dgrslabs/loom => ../..
 
-replace github.com/rhaqim/loom/generator/anthropic => ../../generator/anthropic
+replace github.com/dgrslabs/loom/generator/anthropic => ../../generator/anthropic

@@ -19,7 +19,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/rhaqim/loom/evaluator"
+	"github.com/dgrslabs/loom/evaluator"
 )
 
 // Call records one Evaluate invocation, for assertions in tests.

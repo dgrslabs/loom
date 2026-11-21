@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 func authorReq(lastProse string) *loom.StepRequest {

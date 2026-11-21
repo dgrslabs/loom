@@ -27,7 +27,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rhaqim/loom/evaluator"
+	"github.com/dgrslabs/loom/evaluator"
 )
 
 const (

@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 // jsonGen returns a fixed payload as text, standing in for a judge model.

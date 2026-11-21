@@ -13,9 +13,9 @@ import (
 	"sync"
 
 	"github.com/google/uuid"
-	"github.com/rhaqim/conexus-loom/domain"
-	"github.com/rhaqim/conexus-loom/ports"
-	loom "github.com/rhaqim/loom"
+	"github.com/dgrslabs/conexus-loom/domain"
+	"github.com/dgrslabs/conexus-loom/ports"
+	loom "github.com/dgrslabs/loom"
 )
 
 // ---------------------------------------------------------------------------

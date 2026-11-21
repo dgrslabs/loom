@@ -3,7 +3,7 @@ package narrative
 import (
 	"context"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 // semantic.go is the Quality Engine's semantic tier, built on loom's

@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 const defaultBaseURL = "https://api.replicate.com/v1"

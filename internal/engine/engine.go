@@ -4,7 +4,7 @@
 //
 // It sits behind the module's internal/ boundary — external modules cannot
 // import it. The public, stable surface is the root package
-// github.com/rhaqim/loom, which re-exports the types and constructors here via
+// github.com/dgrslabs/loom, which re-exports the types and constructors here via
 // type aliases. Application code should depend on that facade, never on this
 // package directly.
 package engine

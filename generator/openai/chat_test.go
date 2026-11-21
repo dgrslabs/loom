@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 func TestPerRequestOverrides(t *testing.T) {

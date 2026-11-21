@@ -8,14 +8,14 @@
 
 This file is an AI-oriented guide (an "llms.txt"): read it before writing code that uses loom.
 It is accurate to the current public API. Everything shown is importable from the single
-package `github.com/rhaqim/loom` (the "facade"). Do NOT import anything under
-`github.com/rhaqim/loom/internal/...` — it is not importable from other modules by design.
+package `github.com/dgrslabs/loom` (the "facade"). Do NOT import anything under
+`github.com/dgrslabs/loom/internal/...` — it is not importable from other modules by design.
 
-- Module path: `github.com/rhaqim/loom`
+- Module path: `github.com/dgrslabs/loom`
 - Requires: Go 1.24+ (module targets Go 1.25 per go.mod), and a Postgres or SQLite database.
-- Install: `go get github.com/rhaqim/loom`
+- Install: `go get github.com/dgrslabs/loom`
 - Full docs: the repo `README.md`, runnable `examples/` (story, dnd, storyapi, conexus-loom),
-  and `go doc github.com/rhaqim/loom`. The public API is also listed with docs in `aliases.go`.
+  and `go doc github.com/dgrslabs/loom`. The public API is also listed with docs in `aliases.go`.
 
 ## Mental model (read this first)
 
@@ -36,7 +36,7 @@ package `github.com/rhaqim/loom` (the "facade"). Do NOT import anything under
 - **Hooks**: pre/post interceptors for validation, retries, content filtering.
 
 Golden rules for AI writing loom code:
-1. Import only `github.com/rhaqim/loom` (+ `.../schema` and `.../generator/<x>` subpackages).
+1. Import only `github.com/dgrslabs/loom` (+ `.../schema` and `.../generator/<x>` subpackages).
    Never `.../internal/...`.
 2. Apply the schema BEFORE using the engine (see Setup). Re-running it is safe and runs
    migrations for existing databases.
@@ -51,9 +51,9 @@ import (
     "context"
     "database/sql"
 
-    loom "github.com/rhaqim/loom"
-    "github.com/rhaqim/loom/schema"
-    "github.com/rhaqim/loom/generator/openai"
+    loom "github.com/dgrslabs/loom"
+    "github.com/dgrslabs/loom/schema"
+    "github.com/dgrslabs/loom/generator/openai"
 
     _ "modernc.org/sqlite" // pure-Go SQLite driver (no cgo); or _ "github.com/lib/pq" for Postgres
     "os"
@@ -193,7 +193,7 @@ For a session several people share (a multiplayer game):
 Built-in adapters (each `New...` takes an API key + model unless noted):
 - `generator/openai`    → `openai.NewChatGenerator(key, model)`      — text, streaming
 - `generator/anthropic` → `anthropic.NewChatGenerator(key, model)`   — text, streaming. Its own Go module
-  (keeps the SDK's dependencies out of loom): `go get github.com/rhaqim/loom/generator/anthropic`.
+  (keeps the SDK's dependencies out of loom): `go get github.com/dgrslabs/loom/generator/anthropic`.
   `Params.Extra["effort"]` (`low`…`max`) → `output_config.effort`; `.WithNativeStructuredOutputs()`
   sends a ResponseFormat schema as native structured outputs (schema needs `additionalProperties: false`
   on every object). Default `max_tokens` 16000. A safety refusal returns `*loom.GenerationError{Kind:
@@ -473,7 +473,7 @@ outruns the deadline. Step costs are not at risk either way: they commit with th
 ## Judges (LLM-as-judge scoring)
 
 `e.Judges()` provides rubric scoring, pairwise comparison, and binary constraints via an LLM.
-See `github.com/rhaqim/loom/judge` and the README for `ScoreRequest`/`PairwiseRequest`.
+See `github.com/dgrslabs/loom/judge` and the README for `ScoreRequest`/`PairwiseRequest`.
 
 ## Evaluations (EXPERIMENTAL, opt-in)
 
@@ -487,8 +487,8 @@ ordered rubric) — in ONE round trip, with every question evaluated independent
 change shape in a future minor release.
 
 ```go
-import "github.com/rhaqim/loom/evaluator/typesafe"   // TypeSafe System One (Jev)
-// import "github.com/rhaqim/loom/evaluator/stub"    // offline / tests
+import "github.com/dgrslabs/loom/evaluator/typesafe"   // TypeSafe System One (Jev)
+// import "github.com/dgrslabs/loom/evaluator/stub"    // offline / tests
 
 e, _ := loom.New(loom.Config{ /* ... */ Evaluator: typesafe.New(os.Getenv("TYPESAFE_API_KEY")) })
 
@@ -797,7 +797,7 @@ Set the DSN via `LOOM_DSN` env (preferred), `--dsn-file <path>`, or `--dsn <stri
 
 ## Things NOT to do
 
-- Do not import `github.com/rhaqim/loom/internal/...` (won't compile from your module).
+- Do not import `github.com/dgrslabs/loom/internal/...` (won't compile from your module).
 - Do not skip `schema.Apply` — you'll get missing-table/column errors.
 - Do not drop a schema or close the `*sql.DB` without `Engine.Close(ctx)` first — an in-flight
   poll will race the teardown.
@@ -824,7 +824,7 @@ Set the DSN via `LOOM_DSN` env (preferred), `--dsn-file <path>`, or `--dsn <stri
 - `README.md` — narrative docs and feature table.
 - `examples/story` (minimal), `examples/dnd` (full game), `examples/storyapi` (HTTP API with
   auth), `examples/conexus-loom` (multi-agent multimodal, runs with no API keys).
-- `go doc github.com/rhaqim/loom` — full API with per-symbol docs; `aliases.go` lists the whole
+- `go doc github.com/dgrslabs/loom` — full API with per-symbol docs; `aliases.go` lists the whole
   public surface grouped by domain.
 
 ################################################################################
@@ -832,24 +832,24 @@ Set the DSN via `LOOM_DSN` env (preferred), `--dsn-file <path>`, or `--dsn <stri
 ################################################################################
 
 The types below are shown from the implementation package `engine`. Each is
-re-exported under the SAME name in `github.com/rhaqim/loom` — e.g.
+re-exported under the SAME name in `github.com/dgrslabs/loom` — e.g.
 `engine.Session` is `loom.Session`, `engine.RunStep` is a method on
 `loom.Engine`. In your code always use the `loom.` prefix and import only
-`github.com/rhaqim/loom` (plus the subpackages shown further below). Never
+`github.com/dgrslabs/loom` (plus the subpackages shown further below). Never
 import internal/engine directly.
 
 ################################################################################
-# github.com/rhaqim/loom  (use these under the loom. prefix)
+# github.com/dgrslabs/loom  (use these under the loom. prefix)
 ################################################################################
 
-package engine // import "github.com/rhaqim/loom/internal/engine"
+package engine // import "github.com/dgrslabs/loom/internal/engine"
 
 Package engine is the internal implementation of the loom procgen engine:
 the Engine hub, its registry services, step/turn execution, hooks, cost and
 budget tracking, branch/replay, the async poller, and SQL persistence.
 
 It sits behind the module's internal/ boundary — external modules cannot import
-it. The public, stable surface is the root package github.com/rhaqim/loom,
+it. The public, stable surface is the root package github.com/dgrslabs/loom,
 which re-exports the types and constructors here via type aliases. Application
 code should depend on that facade, never on this package directly.
 
@@ -3435,10 +3435,10 @@ func (r *WorldResult) TaskHandle() *TaskHandle
 
 
 ################################################################################
-# github.com/rhaqim/loom/schema
+# github.com/dgrslabs/loom/schema
 ################################################################################
 
-package schema // import "github.com/rhaqim/loom/schema"
+package schema // import "github.com/dgrslabs/loom/schema"
 
 Package schema provides the versioned migration runner for the Loom engine.
 Apply migrations with:
@@ -3489,10 +3489,10 @@ type Migration struct {
 
 
 ################################################################################
-# github.com/rhaqim/loom/generator/openai
+# github.com/dgrslabs/loom/generator/openai
 ################################################################################
 
-package openai // import "github.com/rhaqim/loom/generator/openai"
+package openai // import "github.com/dgrslabs/loom/generator/openai"
 
 Package openai provides a Loom generator adapter for OpenAI chat models.
 
@@ -3535,10 +3535,10 @@ func (g *ChatGenerator) WithBaseURL(url string) *ChatGenerator
 
 
 ################################################################################
-# github.com/rhaqim/loom/generator/anthropic
+# github.com/dgrslabs/loom/generator/anthropic
 ################################################################################
 
-package anthropic // import "github.com/rhaqim/loom/generator/anthropic"
+package anthropic // import "github.com/dgrslabs/loom/generator/anthropic"
 
 Package anthropic provides a Loom generator adapter for Anthropic Claude models,
 built on the official Anthropic Go SDK (github.com/anthropics/anthropic-sdk-go).
@@ -3602,10 +3602,10 @@ func (g *ChatGenerator) WithNativeStructuredOutputs() *ChatGenerator
 
 
 ################################################################################
-# github.com/rhaqim/loom/generator/replicate
+# github.com/dgrslabs/loom/generator/replicate
 ################################################################################
 
-package replicate // import "github.com/rhaqim/loom/generator/replicate"
+package replicate // import "github.com/dgrslabs/loom/generator/replicate"
 
 Package replicate provides a Loom generator adapter for Replicate image models.
 It uses the async prediction pattern: Generate submits the job and returns a
@@ -3632,10 +3632,10 @@ func (g *ImageGenerator) Poll(ctx context.Context, handle loom.TaskHandle) (loom
 
 
 ################################################################################
-# github.com/rhaqim/loom/generator/runway
+# github.com/dgrslabs/loom/generator/runway
 ################################################################################
 
-package runway // import "github.com/rhaqim/loom/generator/runway"
+package runway // import "github.com/dgrslabs/loom/generator/runway"
 
 Package runway provides a Loom generator adapter for RunwayML video models.
 Generation is asynchronous: Generate submits the task and returns a
@@ -3662,10 +3662,10 @@ func (g *VideoGenerator) Poll(ctx context.Context, handle loom.TaskHandle) (loom
 
 
 ################################################################################
-# github.com/rhaqim/loom/generator/meshy
+# github.com/dgrslabs/loom/generator/meshy
 ################################################################################
 
-package meshy // import "github.com/rhaqim/loom/generator/meshy"
+package meshy // import "github.com/dgrslabs/loom/generator/meshy"
 
 Package meshy provides a Loom generator adapter for Meshy's text-to-3D and
 image-to-3D APIs. It produces GLB-backed Model3DResults asynchronously.
@@ -3704,10 +3704,10 @@ func (g *Model3DGenerator) WithBaseURL(url string) *Model3DGenerator
 
 
 ################################################################################
-# github.com/rhaqim/loom/generator/echo
+# github.com/dgrslabs/loom/generator/echo
 ################################################################################
 
-package echo // import "github.com/rhaqim/loom/generator/echo"
+package echo // import "github.com/dgrslabs/loom/generator/echo"
 
 Package echo provides a deterministic stub generator for testing and examples.
 It echoes the user prompt back as a TextResult, making it useful for exercising
@@ -3736,10 +3736,10 @@ func (g *Generator) Modality() loom.Modality
 
 
 ################################################################################
-# github.com/rhaqim/loom/judge
+# github.com/dgrslabs/loom/judge
 ################################################################################
 
-package judge // import "github.com/rhaqim/loom/judge"
+package judge // import "github.com/dgrslabs/loom/judge"
 
 Package judge provides LLM-based scoring as a reusable abstraction. Judges
 evaluate generator outputs along rubric dimensions, compare pairs, or enforce
@@ -3916,10 +3916,10 @@ type ScoreRequest struct {
 
 
 ################################################################################
-# github.com/rhaqim/loom/harness
+# github.com/dgrslabs/loom/harness
 ################################################################################
 
-package harness // import "github.com/rhaqim/loom/harness"
+package harness // import "github.com/dgrslabs/loom/harness"
 
 Package harness provides a test harness for Loom procgen pipelines.
 
@@ -4054,7 +4054,7 @@ type VariantReport struct {
 
 
 ################################################################################
-# github.com/rhaqim/loom/cmd/loom-cli
+# github.com/dgrslabs/loom/cmd/loom-cli
 ################################################################################
 
 loom-cli is the command-line interface for the Loom procgen engine.

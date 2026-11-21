@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/rhaqim/story-api/domain"
+	"github.com/dgrslabs/story-api/domain"
 )
 
 // Store provides all CRUD operations for story-API tables.

@@ -44,7 +44,7 @@ into `internal/` while `loom.X` stays valid for every consumer.
 // loom/loom.go — the facade (Phase 1)
 package loom
 
-import "github.com/rhaqim/loom/internal/engine"
+import "github.com/dgrslabs/loom/internal/engine"
 
 type (
     Engine      = engine.Engine        // methods, fields, type assertions all carry over

@@ -8,14 +8,14 @@
 
 This file is an AI-oriented guide (an "llms.txt"): read it before writing code that uses loom.
 It is accurate to the current public API. Everything shown is importable from the single
-package `github.com/rhaqim/loom` (the "facade"). Do NOT import anything under
-`github.com/rhaqim/loom/internal/...` — it is not importable from other modules by design.
+package `github.com/dgrslabs/loom` (the "facade"). Do NOT import anything under
+`github.com/dgrslabs/loom/internal/...` — it is not importable from other modules by design.
 
-- Module path: `github.com/rhaqim/loom`
+- Module path: `github.com/dgrslabs/loom`
 - Requires: Go 1.24+ (module targets Go 1.25 per go.mod), and a Postgres or SQLite database.
-- Install: `go get github.com/rhaqim/loom`
+- Install: `go get github.com/dgrslabs/loom`
 - Full docs: the repo `README.md`, runnable `examples/` (story, dnd, storyapi, conexus-loom),
-  and `go doc github.com/rhaqim/loom`. The public API is also listed with docs in `aliases.go`.
+  and `go doc github.com/dgrslabs/loom`. The public API is also listed with docs in `aliases.go`.
 
 ## Mental model (read this first)
 
@@ -36,7 +36,7 @@ package `github.com/rhaqim/loom` (the "facade"). Do NOT import anything under
 - **Hooks**: pre/post interceptors for validation, retries, content filtering.
 
 Golden rules for AI writing loom code:
-1. Import only `github.com/rhaqim/loom` (+ `.../schema` and `.../generator/<x>` subpackages).
+1. Import only `github.com/dgrslabs/loom` (+ `.../schema` and `.../generator/<x>` subpackages).
    Never `.../internal/...`.
 2. Apply the schema BEFORE using the engine (see Setup). Re-running it is safe and runs
    migrations for existing databases.
@@ -51,9 +51,9 @@ import (
     "context"
     "database/sql"
 
-    loom "github.com/rhaqim/loom"
-    "github.com/rhaqim/loom/schema"
-    "github.com/rhaqim/loom/generator/openai"
+    loom "github.com/dgrslabs/loom"
+    "github.com/dgrslabs/loom/schema"
+    "github.com/dgrslabs/loom/generator/openai"
 
     _ "modernc.org/sqlite" // pure-Go SQLite driver (no cgo); or _ "github.com/lib/pq" for Postgres
     "os"
@@ -193,7 +193,7 @@ For a session several people share (a multiplayer game):
 Built-in adapters (each `New...` takes an API key + model unless noted):
 - `generator/openai`    → `openai.NewChatGenerator(key, model)`      — text, streaming
 - `generator/anthropic` → `anthropic.NewChatGenerator(key, model)`   — text, streaming. Its own Go module
-  (keeps the SDK's dependencies out of loom): `go get github.com/rhaqim/loom/generator/anthropic`.
+  (keeps the SDK's dependencies out of loom): `go get github.com/dgrslabs/loom/generator/anthropic`.
   `Params.Extra["effort"]` (`low`…`max`) → `output_config.effort`; `.WithNativeStructuredOutputs()`
   sends a ResponseFormat schema as native structured outputs (schema needs `additionalProperties: false`
   on every object). Default `max_tokens` 16000. A safety refusal returns `*loom.GenerationError{Kind:
@@ -473,7 +473,7 @@ outruns the deadline. Step costs are not at risk either way: they commit with th
 ## Judges (LLM-as-judge scoring)
 
 `e.Judges()` provides rubric scoring, pairwise comparison, and binary constraints via an LLM.
-See `github.com/rhaqim/loom/judge` and the README for `ScoreRequest`/`PairwiseRequest`.
+See `github.com/dgrslabs/loom/judge` and the README for `ScoreRequest`/`PairwiseRequest`.
 
 ## Evaluations (EXPERIMENTAL, opt-in)
 
@@ -487,8 +487,8 @@ ordered rubric) — in ONE round trip, with every question evaluated independent
 change shape in a future minor release.
 
 ```go
-import "github.com/rhaqim/loom/evaluator/typesafe"   // TypeSafe System One (Jev)
-// import "github.com/rhaqim/loom/evaluator/stub"    // offline / tests
+import "github.com/dgrslabs/loom/evaluator/typesafe"   // TypeSafe System One (Jev)
+// import "github.com/dgrslabs/loom/evaluator/stub"    // offline / tests
 
 e, _ := loom.New(loom.Config{ /* ... */ Evaluator: typesafe.New(os.Getenv("TYPESAFE_API_KEY")) })
 
@@ -797,7 +797,7 @@ Set the DSN via `LOOM_DSN` env (preferred), `--dsn-file <path>`, or `--dsn <stri
 
 ## Things NOT to do
 
-- Do not import `github.com/rhaqim/loom/internal/...` (won't compile from your module).
+- Do not import `github.com/dgrslabs/loom/internal/...` (won't compile from your module).
 - Do not skip `schema.Apply` — you'll get missing-table/column errors.
 - Do not drop a schema or close the `*sql.DB` without `Engine.Close(ctx)` first — an in-flight
   poll will race the teardown.
@@ -824,5 +824,5 @@ Set the DSN via `LOOM_DSN` env (preferred), `--dsn-file <path>`, or `--dsn <stri
 - `README.md` — narrative docs and feature table.
 - `examples/story` (minimal), `examples/dnd` (full game), `examples/storyapi` (HTTP API with
   auth), `examples/conexus-loom` (multi-agent multimodal, runs with no API keys).
-- `go doc github.com/rhaqim/loom` — full API with per-symbol docs; `aliases.go` lists the whole
+- `go doc github.com/dgrslabs/loom` — full API with per-symbol docs; `aliases.go` lists the whole
   public surface grouped by domain.

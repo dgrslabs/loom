@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/google/uuid"
-	"github.com/rhaqim/story-api/domain"
+	"github.com/dgrslabs/story-api/domain"
 )
 
 // GET /api/stories

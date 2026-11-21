@@ -3,9 +3,9 @@ package handler
 import (
 	"net/http"
 
-	"github.com/rhaqim/story-api/domain"
-	"github.com/rhaqim/story-api/game"
-	"github.com/rhaqim/story-api/store"
+	"github.com/dgrslabs/story-api/domain"
+	"github.com/dgrslabs/story-api/game"
+	"github.com/dgrslabs/story-api/store"
 )
 
 // GET /api/topics

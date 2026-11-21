@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 const defaultBaseURL = "https://api.openai.com/v1"

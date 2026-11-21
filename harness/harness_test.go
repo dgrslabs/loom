@@ -12,8 +12,8 @@ import (
 	"sync"
 	"testing"
 
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom/schema"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom/schema"
 
 	"github.com/google/uuid"
 	_ "modernc.org/sqlite"

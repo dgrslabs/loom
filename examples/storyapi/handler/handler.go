@@ -9,10 +9,10 @@ import (
 	"strings"
 
 	"github.com/google/uuid"
-	"github.com/rhaqim/story-api/auth"
-	"github.com/rhaqim/story-api/domain"
-	"github.com/rhaqim/story-api/game"
-	"github.com/rhaqim/story-api/store"
+	"github.com/dgrslabs/story-api/auth"
+	"github.com/dgrslabs/story-api/domain"
+	"github.com/dgrslabs/story-api/game"
+	"github.com/dgrslabs/story-api/store"
 )
 
 type contextKey string

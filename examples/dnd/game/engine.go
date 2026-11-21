@@ -7,13 +7,13 @@ import (
 	"os"
 
 	"github.com/google/uuid"
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom-dnd/domain"
-	"github.com/rhaqim/loom-dnd/store"
-	"github.com/rhaqim/loom/generator/anthropic"
-	"github.com/rhaqim/loom/generator/echo"
-	"github.com/rhaqim/loom/generator/openai"
-	"github.com/rhaqim/loom/schema"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom-dnd/domain"
+	"github.com/dgrslabs/loom-dnd/store"
+	"github.com/dgrslabs/loom/generator/anthropic"
+	"github.com/dgrslabs/loom/generator/echo"
+	"github.com/dgrslabs/loom/generator/openai"
+	"github.com/dgrslabs/loom/schema"
 )
 
 const (

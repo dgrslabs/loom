@@ -19,7 +19,7 @@ import (
 
 	"github.com/google/uuid"
 	_ "github.com/lib/pq"
-	"github.com/rhaqim/loom/schema"
+	"github.com/dgrslabs/loom/schema"
 	_ "modernc.org/sqlite"
 )
 

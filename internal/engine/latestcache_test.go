@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/rhaqim/loom/schema"
+	"github.com/dgrslabs/loom/schema"
 	_ "modernc.org/sqlite"
 )
 

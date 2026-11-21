@@ -9,9 +9,9 @@ import (
 	"strings"
 
 	"github.com/google/uuid"
-	"github.com/rhaqim/loom-dnd/domain"
-	"github.com/rhaqim/loom-dnd/game"
-	"github.com/rhaqim/loom-dnd/store"
+	"github.com/dgrslabs/loom-dnd/domain"
+	"github.com/dgrslabs/loom-dnd/game"
+	"github.com/dgrslabs/loom-dnd/store"
 	"github.com/spf13/cobra"
 )
 

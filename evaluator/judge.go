@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/rhaqim/loom/judge"
+	"github.com/dgrslabs/loom/judge"
 )
 
 // judge.go adapts an Evaluator to loom's three judge interfaces. The mapping is

@@ -10,8 +10,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/rhaqim/conexus-loom/domain"
-	"github.com/rhaqim/conexus-loom/engine"
+	"github.com/dgrslabs/conexus-loom/domain"
+	"github.com/dgrslabs/conexus-loom/engine"
 )
 
 type Transcript struct {

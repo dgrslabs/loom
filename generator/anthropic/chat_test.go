@@ -15,7 +15,7 @@ import (
 	"strings"
 	"testing"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 // seen is what a fake server observed about the last request.

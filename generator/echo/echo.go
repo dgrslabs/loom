@@ -8,7 +8,7 @@ import (
 	"context"
 	"fmt"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 // Generator implements loom.Generator and loom.StreamingGenerator.

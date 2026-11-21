@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/rhaqim/conexus-loom/domain"
-	loom "github.com/rhaqim/loom"
+	"github.com/dgrslabs/conexus-loom/domain"
+	loom "github.com/dgrslabs/loom"
 )
 
 // Flow builds the turn definition at a target prompt version: the Author streams

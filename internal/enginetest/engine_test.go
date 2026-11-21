@@ -11,9 +11,9 @@ import (
 
 	_ "github.com/lib/pq"
 
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom/generator/echo"
-	"github.com/rhaqim/loom/schema"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom/generator/echo"
+	"github.com/dgrslabs/loom/schema"
 )
 
 // openTestDB opens a real Postgres connection and applies the schema.

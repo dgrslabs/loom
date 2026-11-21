@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/rhaqim/loom/judge"
+	"github.com/dgrslabs/loom/judge"
 )
 
 // judgeRegistryImpl wraps judge.Registry to satisfy the JudgeRegistry interface

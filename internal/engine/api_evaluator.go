@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/rhaqim/loom/evaluator"
+	"github.com/dgrslabs/loom/evaluator"
 )
 
 // Evaluator answers typed questions about a state, returning calibrated

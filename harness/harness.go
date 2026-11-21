@@ -34,7 +34,7 @@ import (
 	"sync"
 	"time"
 
-	loom "github.com/rhaqim/loom"
+	loom "github.com/dgrslabs/loom"
 )
 
 const (

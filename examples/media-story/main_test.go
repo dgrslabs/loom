@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom/schema"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom/schema"
 )
 
 // fakeMeshy is a two-stage async 3D generator whose adapter Provider ("meshy")

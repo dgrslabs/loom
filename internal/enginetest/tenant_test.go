@@ -16,8 +16,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom/generator/echo"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom/generator/echo"
 )
 
 // slug keeps each run independent — the Postgres database is shared and

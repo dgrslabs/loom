@@ -20,9 +20,9 @@ import (
 	"unicode/utf8"
 
 	"github.com/google/uuid"
-	loom "github.com/rhaqim/loom"
-	"github.com/rhaqim/loom/generator/meshy"
-	"github.com/rhaqim/loom/schema"
+	loom "github.com/dgrslabs/loom"
+	"github.com/dgrslabs/loom/generator/meshy"
+	"github.com/dgrslabs/loom/schema"
 	_ "modernc.org/sqlite"
 )
 

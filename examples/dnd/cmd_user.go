@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/rhaqim/loom-dnd/domain"
-	"github.com/rhaqim/loom-dnd/store"
+	"github.com/dgrslabs/loom-dnd/domain"
+	"github.com/dgrslabs/loom-dnd/store"
 	"github.com/spf13/cobra"
 )
 

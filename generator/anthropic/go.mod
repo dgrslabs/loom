@@ -1,10 +1,10 @@
-module github.com/rhaqim/loom/generator/anthropic
+module github.com/dgrslabs/loom/generator/anthropic
 
 go 1.26.0
 
 require (
 	github.com/anthropics/anthropic-sdk-go/v2 v2.9.0
-	github.com/rhaqim/loom v0.0.3
+	github.com/dgrslabs/loom v0.0.3
 )
 
 require (
@@ -32,4 +32,4 @@ require (
 
 // In-repo development builds against the loom checkout. A release of this
 // module requires a tagged loom version instead (see README).
-replace github.com/rhaqim/loom => ../..
+replace github.com/dgrslabs/loom => ../..

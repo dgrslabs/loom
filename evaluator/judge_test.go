@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/rhaqim/loom/evaluator"
-	"github.com/rhaqim/loom/evaluator/stub"
-	"github.com/rhaqim/loom/judge"
+	"github.com/dgrslabs/loom/evaluator"
+	"github.com/dgrslabs/loom/evaluator/stub"
+	"github.com/dgrslabs/loom/judge"
 )
 
 // The adapters must satisfy the existing judge interfaces exactly — that is
