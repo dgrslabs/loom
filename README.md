@@ -656,7 +656,7 @@ branch (`RELEASE_BRANCH` overrides) or an existing tag, and pushes nothing.
 
 loom was created and is maintained by **Anusiem John-Franklin** ([@Rhaqim](https://github.com/Rhaqim)).
 
-It began in 2026 as [`github.com/Rhaqim/loom`](https://github.com/Rhaqim/loom), which remains its original home. In November 2026 it was brought to the [dgrslabs](https://github.com/dgrslabs) organization as `github.com/dgrslabs/loom`, starting at `v0.0.4`.
+It began in 2026 as `github.com/Rhaqim/loom`. That original project continues independently as [Noewright](https://github.com/Rhaqim/noewright) (`github.com/rhaqim/noewright`). In November 2026 it was brought to the [dgrslabs](https://github.com/dgrslabs) organization as `github.com/dgrslabs/loom`, starting at `v0.0.4`.
 
 ## License
 
